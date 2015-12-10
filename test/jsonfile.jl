@@ -44,15 +44,16 @@ end
 @test Dict("2"=>3, "5"=>6) == parse(f"int-dict.json")
 
 
-# 0.5
-for a ∈ f"array.json"
-  idx,hello,world = a
+# 0.5 
+# for a ∈ f"array.json"
+for a in f"array.json"
+  (idx,hello,world) = a
   #println(idx, hello, world)
   break
 end
 
 
-for (k,v) ∈ f"dict.json"
+for (k,v) in f"dict.json"
   #println(k, v)
   break
 end

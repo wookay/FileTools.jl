@@ -1,5 +1,6 @@
 using FileTools
 using Base.Test
 
-# write your own tests here
-@test 1 == 1
+@testset "JSONFile" begin
+  include("jsonfile.jl")
+end

@@ -3,7 +3,7 @@
 using JSON, DataStructures
 
 import Base: ==, getindex
-import Base: length, filesize, start, next, done, parse, open, push!, keys, values
+import Base: length, filesize, start, next, done, parse, open, push!, keys, values, map
 export JSONFile, save, @json_str
 
 type JSONFile <: AbstractFile
@@ -71,6 +71,8 @@ function push!(io::JSONFileIO, data::Any)
   end
 end
 
+map(fn::Function, file::JSONFile) = map(fn, parse(file))
+
 length(file::JSONFile) = length(parse(file))
 filesize(file::JSONFile) = filesize(file.path) 
 
@@ -83,6 +85,7 @@ function start(f::JSONFile)
 end
 next(file::JSONFile, i) = next(file.data, i)
 done(file::JSONFile, i) = done(file.data, i)
+
 
 # dict
 keys(file::JSONFile) = collect(keys(parse(file)))

@@ -1,6 +1,12 @@
 using FileTools
 using Base.Test
 
-@testset "JSONFile" begin
-  include("jsonfile.jl")
+@testset "FileTools" begin
+  @testset "JSONFile" begin
+    include("jsonfile.jl")
+  end
+  
+  @testset "TXTFile" begin
+    include("txtfile.jl")
+  end
 end

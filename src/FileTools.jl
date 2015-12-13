@@ -13,5 +13,6 @@ end
 
 
 include("jsonfile.jl")
+include("txtfile.jl")
 
 end # module

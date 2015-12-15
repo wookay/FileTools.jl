@@ -7,6 +7,7 @@ using Base.Test
 @test 2 == length(f"hello.txt")
 @test 12 == filesize(f"hello.txt")
 @test f"hello.txt"[1] == split("""hello\nworld""",'\n')[1]
+@test f"hello.txt"[1:end] == split("""hello\nworld""",'\n')
 
 # int-array.txt
 save(f"int-array.txt", "1\n2\n3")

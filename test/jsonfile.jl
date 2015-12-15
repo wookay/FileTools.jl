@@ -7,7 +7,8 @@ using Base.Test
 @test 20 == length(f"array.json")
 @test 413 == filesize(f"array.json")
 @test f"array.json"[1] == json"""[[1,"hello","world"]]"""[1]
-@test 210 == sum(map(a->a[1], f"array.json"))
+@test [18,19,20] == map(first, f"array.json"[end-2:end])
+@test 210 == sum(map(first, f"array.json"))
 
 # dict.json
 @test JSONFile("dict.json") == f"dict.json"

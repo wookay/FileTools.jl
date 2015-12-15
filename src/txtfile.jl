@@ -1,7 +1,7 @@
 # TXTFile.jl
 
 import Base: ==, getindex
-import Base: length, filesize, start, next, done, parse, open, push!, keys, values, map
+import Base: length, filesize, start, next, done, parse, open, push!, keys, values, map, endof
 export TXTFile, save
 
 type TXTFile <: AbstractFile
@@ -67,11 +67,10 @@ filesize(file::TXTFile) = filesize(file.path)
 getindex(file::TXTFile, a::Any) = getindex(parse(file), a)
 
 # iterators
-function start(f::TXTFile)
-  start(parse(f))
-end
-next(file::TXTFile, i) = next(file.data, i)
-done(file::TXTFile, i) = done(file.data, i)
+start(f::TXTFile) = start(parse(f))
+next(file::TXTFile, i) = next(parse(file), i)
+done(file::TXTFile, i) = done(parse(file), i)
+endof(file::TXTFile) = endof(parse(file))
 
 
 # dict
